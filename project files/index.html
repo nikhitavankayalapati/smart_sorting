@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fruit Freshness Classifier</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 40px;
+      background-color: #f0fff0;
+    }
+    .upload-box {
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px dashed #28a745;
+      width: 400px;
+      background: #fff;
+    }
+    img {
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .result {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fruit or vegetable Freshness Classifier</h1>
+  <form method="POST" enctype="multipart/form-data" class="upload-box">
+    <input type="file" name="file" required>
+    <br><br>
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if prediction %}
+    <div class="result">
+      <strong>Prediction:</strong> {{ prediction | upper }} <br>
+      <strong>Confidence:</strong> {{ confidence }}
+    </div>
+    <img src="{{ file_url }}" alt="Uploaded Image">
+  {% endif %}
+</body>
+</html>
